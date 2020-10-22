@@ -13,6 +13,7 @@ else:
 waiting_data = True
 waiting_flag = True
 starting_flag = True
+numeric_data = False
 
 # Clear previous file contents
 f = open(file_name, "w+")
@@ -33,13 +34,19 @@ while True:
             starting_flag = False
         ser_list = ser_line.split(",")
 
-        print(ser_list)
+        try :  
+            temp_float = float(ser_list[0])
+            numeric_data = True
+        except : 
+            print("Not a float") 
+            numeric_data = False
 
-        if ser_list[0].isnumeric():
-            measurement = input("Enter extension reading:   ")
-            spring_extension = ser_list[0] - measurement
+        if numeric_data:
+            user_in = input("Enter extension reading:   ")
+            measurement = float(user_in)
+            spring_extension = temp_float - measurement
             # spring extension is in mm so needs to be converted to m
-            spring_force = spring_k * spring_extension / 1000;
+            spring_force = spring_k * spring_extension / 1000
             ser_list.insert(0, spring_force)
 
         print(ser_list)

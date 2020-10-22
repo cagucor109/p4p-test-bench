@@ -34,7 +34,7 @@ const int MIN_PWM = 850;
 
 const int pulley_radius = 6; // measurement in mm
 const float revs_per_increment = 0.25; // fraction change in revs per loop iteration
-const int time_delay = 5; // time between each test to allow for manual measurement
+const int time_delay = 2; // time between each test to allow for manual measurement
 const int trial_num = 10; // the number of readings sent through serial
 
 int encoder_cnt; // NOTE: this needs to be read from and initiated to 0 at the start of the program (setup function)
@@ -106,7 +106,7 @@ void loop() {
       break;
     case(3):
       while(encoder_cnt > 20){
-        myServo.writeMicroseconds(1650);
+        myServo.writeMicroseconds(1600);
         encoder_cnt = analogRead(encoder_pin);
         //Serial.print("Encoder count 3: ");
         //Serial.println(encoder_cnt);
@@ -124,8 +124,6 @@ void loop() {
   if(count > trial_num){
     // end the program and lock cpu in infinite loop until reset is pressed
     Serial.println("finished");
-    cli();
-    while(true);
   }else{
     total_extension = count * revs_per_increment * pulley_radius * M_PI * 2;
     Serial.println(total_extension);
