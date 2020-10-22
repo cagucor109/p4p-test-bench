@@ -2,7 +2,7 @@ import csv
 import serial
 import sys
 
-arduino_port = "/dev/ttyACM0"
+arduino_port = "/dev/ttyUSB0"
 baud = 9600
 spring_k = 1
 if len(sys.argv) == 1:
