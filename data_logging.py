@@ -40,6 +40,8 @@ while True:
         except : 
             numeric_data = False
 
+        print(ser_list)
+        
         if numeric_data:
             user_in = input("Enter extension reading:   ")
             measurement = float(user_in)
@@ -47,8 +49,6 @@ while True:
             # spring extension is in mm so needs to be converted to m
             spring_force = spring_k * spring_extension / 1000
             ser_list.insert(0, spring_force)
-
-        print(ser_list)
 
         with open(file_name, "a") as f:
             writer = csv.writer(f, delimiter = ",")
