@@ -4,7 +4,7 @@ import sys
 
 arduino_port = "/dev/ttyUSB0"
 baud = 9600
-spring_k = 1
+spring_k = 59.5
 if len(sys.argv) == 1:
     file_name = "output.csv"    
 else:
