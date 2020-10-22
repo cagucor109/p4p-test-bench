@@ -32,7 +32,7 @@ const int MAX_PWM = 2150;
 const int MID_PWM = 1500;
 const int MIN_PWM = 850;
 
-const int pulley_radius = 2; // measurement in mm
+const int pulley_radius = 6; // measurement in mm
 const float revs_per_increment = 0.25; // fraction change in revs per loop iteration
 const int time_delay = 5; // time between each test to allow for manual measurement
 const int trial_num = 10; // the number of readings sent through serial
@@ -53,7 +53,7 @@ void setup() {
   while(encoder_cnt > 20){
     myServo.writeMicroseconds(1600);
     encoder_cnt = analogRead(encoder_pin);
-    Serial.println(encoder_cnt);
+    //Serial.println(encoder_cnt);
     delay(50);
   }
   myServo.writeMicroseconds(MID_PWM);
