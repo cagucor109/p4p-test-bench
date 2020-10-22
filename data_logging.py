@@ -38,7 +38,6 @@ while True:
             temp_float = float(ser_list[0])
             numeric_data = True
         except : 
-            print("Not a float") 
             numeric_data = False
 
         if numeric_data:
